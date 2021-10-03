@@ -11,6 +11,7 @@ class Point<E>(val x: Double, val y: Double, val value: E? = null) {
         val xDiff = other.x - this.x
         val yDiff = other.y - this.y
 
+        if (xDiff == 0.0 && yDiff == 0.0) {return 0.0}
         if (xDiff == 0.0) {return 90.0}
         if (yDiff == 0.0) {return 180.0}
 

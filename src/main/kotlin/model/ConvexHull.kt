@@ -2,6 +2,30 @@ package model
 
 class ConvexHull<E>(vararg points: Point<E>) {
     private val points = mutableListOf<Point<E>>(*points)
+
+    private fun getStartingPoint(): Point<E> {
+        var start: Point<E> = points[0]
+
+        for (point in this.points) {
+            if (point.y < start.y) {
+                start = point
+            }
+        }
+
+        return start
+    }
+
+    fun shortestPath(): List<Point<E>> {
+        val path = mutableListOf<Point<E>>()
+        val startingPoint = getStartingPoint()
+        this.points.sortBy{startingPoint angle it}
+
+        for (point in this.points) {
+            println(startingPoint angle point)
+        }
+
+        return path
+    }
 }
 
 fun main() {
@@ -12,4 +36,5 @@ fun main() {
     val e = Point<Int>(20.0, 2.0)
 
     val hull = ConvexHull<Int>(a, b, c, d, e)
+    hull.shortestPath()
 }
