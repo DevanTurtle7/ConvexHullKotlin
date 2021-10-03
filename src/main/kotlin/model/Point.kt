@@ -3,8 +3,8 @@ package model
 import java.lang.Math.atan
 
 class Point<E>(val x: Double, val y: Double, val value: E? = null) {
-    infix fun <E> dot(other: Point<E>): Double {
-        return (this.x * other.x) + (this.y * other.y)
+    fun <E> crossProduct(from: Point<E>, middle: Point<E>): Double {
+        return ((middle.x - from.x) * (this.y - from.y)) - ((middle.y - from.y) * (this.x - from.x))
     }
 
     infix fun <E> angle(other: Point<E>): Double {
@@ -37,7 +37,6 @@ fun main() {
     val d = Point<Int>(0.0, 4.0)
     val e = Point<Int>(20.0, 2.0)
 
-    println(a dot b)
     println(a angle b)
     println(a angle c)
     println(a angle d)
