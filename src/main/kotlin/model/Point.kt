@@ -1,6 +1,6 @@
 package model
 
-class Point<E>(val x: Int, val y: Int, val value: E?) {
+class Point<E>(val x: Int, val y: Int, val value: E? = null) {
     infix fun dot(other: Point<E>): Int {
         return (this.x * other.x) + (this.y * other.y)
     }
